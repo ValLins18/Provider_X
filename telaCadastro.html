@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADASTRO</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="./CSS/telaCadastro.css">
+    <script src="./js/jquery.js"></script>
+    
+</head>
+<body>
+    <div class="painel-form">
+        <h2>CADASTRO</h2>
+        <form action="index.html">
+            <div class="campos-form" id="div-nome">   
+                <input type="text" id="nome" name="nome" required>
+                <label>Nome Completo</label>
+            </div>
+                <div class="campos-form">   
+                    <input type="text" oninput="mascararCPF(this);validarCPF(this)"  id="cpf" name="CPF" required>
+                    <label id="labelCPF">CPF</label>
+                </div>
+                
+                <div class="campos-form">   
+                    <input type="text" oninput="mascararData(this)" id="nasc" name="data-nasc" required>
+                    <label>Data de Nascimento</label>
+                </div>
+                
+                <div class="campos-form">   
+                    <input oninput="mascararTel(this)" type="tel" id="tel" name="telefone" required>
+                    <label>Telefone</label>
+                </div>
+            <div class="campos-form">   
+                <input type="email" id="email" name="email" required>
+                <label>E-mail</label>
+            </div>
+            <div class="campos-form">   
+                <input onblur="buscarCep(this)" type="text" id="cep" name="cep" required>
+                <label>CEP</label>
+            </div>
+            <div class="campos-form">   
+                <input type="text" id="rua" name="rua" required>
+                <label>Rua</label>
+            </div>
+            <div class="campos-form">   
+                <input type="text" id="numero" onabort="" name="numero" required>
+                <label>Numero</label>
+            </div>
+            <div class="campos-form">   
+                <input type="text" id="bairro" name="bairro" required>
+                <label>Bairro</label>
+            </div>
+            <div class="campos-form">   
+                <input type="text" id="cidade" name="cidade" required>
+                <label>Cidade</label>
+            </div>
+            <div class="campos-form">   
+                <input minlength="8" oninvalid="this.setCustomValidity('A senha precisa ter no minimo 8 digitos')" type="password" id="senha" required>
+                <label>Senha</label>
+            </div>
+            <div class="campos-form">   
+                <input type="password" oninput="verificarSenhas(this)" id="verificaSenha" required>
+                <label>Confirmar Senha</label>
+            </div>
+            <button disabled id="finalizarCadastro">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Finalizar Cadastro
+                <!-- <button on class="botao-submit" type="submit"></button> -->
+            </button>
+        </form>
+    </div>
+</body>
+<script src="./index.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+        let form = document.querySelector('form')
+        const botao = document.querySelector('#finalizarCadastro')
+        form.addEventListener('change', function(){
+            const campos = document.querySelectorAll('input')
+            let libera = []
+            console.log(campos)
+            
+            campos.forEach(e => {
+                if(e.value){
+                    libera.push(true)
+                }
+                console.log(libera)
+            })
+            if(libera.length == campos.length){
+                $('#finalizarCadastro').removeAttr('disabled')
+                console.log('adicionado')
+                    
+            } else {
+                $('#finalizarCadastro').attr('disabled')
+                console.log('removido')
+            }
+        })
+    </script>
+</html>
